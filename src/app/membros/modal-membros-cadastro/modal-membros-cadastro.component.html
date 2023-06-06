@@ -1,200 +1,212 @@
-<div class="container">
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Cadastro novo membro</h4>
+    <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
+</div>
 
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-title">Cadastro novo membro</h4>
-        <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-	
-    <div class="modal-body">
-        <form [formGroup]="membrosCadastroForm">
+<div class="modal-body">
+    <form [formGroup]="membrosCadastroForm">
 
-            <div class="row mb-3">
-                <div class="col-5">
-                    <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="nome" formControlName="nome" name="nome" placeholder="Nome do membro">
+        <div class="row mb-3">
+            <div class="col-sm-5">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" formControlName="nome" name="nome" placeholder="Nome do membro">
 
-                    <app-mensagens-erro [mensagem]="'Informe o nome do membro'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('nome')">
-                    </app-mensagens-erro>
-                    <app-mensagens-erro [mensagem]="'Tamanho mínimo de 10 caracteres'" 
-                                        [error]="'minlength'" 
-                                        [controle]="membrosCadastroForm.get('nome')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-5">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="email" formControlName="email" name="email">
-
-                    <app-mensagens-erro [mensagem]="'Informe o email caso tenha'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('email')">
-                    </app-mensagens-erro>
-                    <app-mensagens-erro [mensagem]="'Tamanho mínimo de 10 caracteres'" 
-                                        [error]="'minlength'" 
-                                        [controle]="membrosCadastroForm.get('email')">
-                    </app-mensagens-erro>
-                    <app-mensagens-erro [mensagem]="'E-mail inválido'" 
-                                        [error]="'email'" 
-                                        [controle]="membrosCadastroForm.get('email')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-2">
-                    <label for="telefone" class="form-label">telefone</label>
-                    <input type="text" class="form-control" id="telefone" formControlName="telefone" name="telefone" placeholder="Telefone">
-
-                    <app-mensagens-erro [mensagem]="'Informe um telefone'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('telefone')">
-                    </app-mensagens-erro>
-                </div>
+                <app-mensagens-erro [mensagem]="'Informe o nome do membro'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('nome')">
+                </app-mensagens-erro>
+                <app-mensagens-erro [mensagem]="'Tamanho mínimo de 10 caracteres'" 
+                                    [error]="'minlength'" 
+                                    [controle]="membrosCadastroForm.get('nome')">
+                </app-mensagens-erro>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-sm-2">
-                    <label for="dataNascimento" class="form-label">Data nascimento</label>
-                    <input type="date" class="form-control" id="dataNascimento" formControlName="dataNascimento" name="dataNascimento">
+            <div class="col-sm-5">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" formControlName="email" name="email">
 
-                    <app-mensagens-erro [mensagem]="'Informe a data de nascimento'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('dataNascimento')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-2">
-                    <label for="dataBatismo" class="form-label">Data batismo</label>
-                    <input type="date" class="form-control" id="dataBatismo" formControlName="dataBatismo" name="dataBatismo">
-
-                    <app-mensagens-erro [mensagem]="'Informe a data de batismo'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('dataBatismo')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-4">
-                    <label for="status" class="form-label">Situação</label>
-                    <select class="form-select" name="" id="status" formControlName="situacao" name="situacao">
-                        <option value="">Escolha um status</option>
-                        <option *ngFor="let situacao of situacoes" [value]="situacao">{{ situacao }}</option>
-                    </select>
-
-                    <app-mensagens-erro [mensagem]="'preencha o campo situação'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('situacao')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-4">
-                    <label for="cargo" class="form-label">Cargo</label>
-                    <select class="form-select" name="" id="cargo" formControlName="cargo" name="cargo">
-                        <option value="">Escolha um cargo</option>
-                        <option *ngFor="let cargo of cargos" [value]="cargo">{{ cargo }}</option>
-                    </select>
-
-                    <app-mensagens-erro [mensagem]="'preencha o campo cargo'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('cargo')">
-                    </app-mensagens-erro>
-                </div>
+                <app-mensagens-erro [mensagem]="'Informe o email caso tenha'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('email')">
+                </app-mensagens-erro>
+                <app-mensagens-erro [mensagem]="'Tamanho mínimo de 10 caracteres'" 
+                                    [error]="'minlength'" 
+                                    [controle]="membrosCadastroForm.get('email')">
+                </app-mensagens-erro>
+                <app-mensagens-erro [mensagem]="'E-mail inválido'" 
+                                    [error]="'email'" 
+                                    [controle]="membrosCadastroForm.get('email')">
+                </app-mensagens-erro>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-12">
-                    <label for="congregacao" class="form-label">Congregado em</label>
-                    <select class="form-select" name="" id="congregacao" formControlName="congregacao" name="congregacao">
-                        <option value="">Escolha uma congregação</option>
-                        <option *ngFor="let congregacao of congregacoes" [value]="congregacao">{{ congregacao }}</option>
-                    </select>
+            <div class="col-sm-2">
+                <label for="telefone" class="form-label">telefone</label>
+                <input type="text" class="form-control" id="telefone" formControlName="telefone" name="telefone" placeholder="Telefone">
 
-                    <app-mensagens-erro [mensagem]="'preencha o campo congregação'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('congregacao')">
-                    </app-mensagens-erro>
-                </div>
+                <app-mensagens-erro [mensagem]="'Informe um telefone'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('telefone')">
+                </app-mensagens-erro>
             </div>
-            <hr>
+        </div>
 
-            <div class="row mb-3" formGroupName="endereco">
-                <div class="col-sm-5">
-                    <label for="rua" class="form-label">Rua</label>
-                    <input type="text" class="form-control" id="rua" formControlName="rua" name="rua">
+        <div class="row mb-3">
+            <div class="col-sm-2">
+                <label for="dataNascimento" class="form-label">Data nascimento</label>
+                <input type="date" class="form-control" id="dataNascimento" formControlName="dataNascimento" name="dataNascimento">
 
-                    <app-mensagens-erro [mensagem]="'Informe o nome da rua'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('endereco.rua')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-1">
-                    <label for="numero" class="form-label">Número</label>
-                    <input type="text" class="form-control" id="numero" formControlName="numero" name="numero">
-
-                    <app-mensagens-erro [mensagem]="'Informe o número'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('endereco.numero')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-6">
-                    <label for="complemento" class="form-label">Complemento</label>
-                    <input type="text" class="form-control" id="complemento" formControlName="complemento" name="complemento">
-                </div>
+                <app-mensagens-erro [mensagem]="'Informe a data de nascimento'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('dataNascimento')">
+                </app-mensagens-erro>
             </div>
 
-            <div class="row mb-3" formGroupName="endereco">
-                <div class="col-sm-2">
-                    <label for="cep" class="form-label">Cep</label>
-                    <input type="text" class="form-control" id="cep" formControlName="cep" name="cep">
+            <div class="col-sm-2">
+                <label for="dataBatismo" class="form-label">Data batismo</label>
+                <input type="date" class="form-control" id="dataBatismo" formControlName="dataBatismo" name="dataBatismo">
 
-                    <app-mensagens-erro [mensagem]="'Informe o cep'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('endereco.cep')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-4">
-                    <label for="bairro" class="form-label">Bairro</label>
-                    <input type="text" class="form-control" id="bairro" formControlName="bairro" name="bairro">
-
-                    <app-mensagens-erro [mensagem]="'Informe o bairro'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('endereco.bairro')">
-                    </app-mensagens-erro>
-                </div>
-
-                <div class="col-sm-6">
-                    <label for="cidade" class="form-label">Cidade</label>
-                    <input type="text" class="form-control" id="cidade" formControlName="cidade" name="cidade">
-
-                    <app-mensagens-erro [mensagem]="'Informe a cidade'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('endereco.cidade')">
-                    </app-mensagens-erro>
-                </div>
+                <app-mensagens-erro [mensagem]="'Informe a data de batismo'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('dataBatismo')">
+                </app-mensagens-erro>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-12" formGroupName="endereco">
-                    <label for="estado" class="form-label">Estado</label>
-                    <select class="form-select" name="" id="estado" formControlName="estado" name="estado">
-                        <option value="">Escolha um estado</option>
-                        <option *ngFor="let ls of listaEstados" [value]="ls.nome">{{ ls.nome }}</option>
-                    </select>
+            <div class="col-sm-2">
+                <label for="status" class="form-label">Situação</label>
+                <select class="form-select" name="" id="status" formControlName="situacao" name="situacao">
+                    <option value="">Escolha um status</option>
+                    <option *ngFor="let situacao of situacoes" [value]="situacao">{{ situacao }}</option>
+                </select>
 
-                    <app-mensagens-erro [mensagem]="'Informe o estado'" 
-                                        [error]="'required'" 
-                                        [controle]="membrosCadastroForm.get('endereco.estado')">
-                    </app-mensagens-erro>
-                </div>
+                <app-mensagens-erro [mensagem]="'preencha o campo situação'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('situacao')">
+                </app-mensagens-erro>
             </div>
-        </form>
-    </div>
-	
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-        <button type="button" class="btn btn-secondary">Limpar</button>
-        <button type="submit" class="btn btn-primary" (click)="salvar()">Salvar</button>
-    </div>
+
+            <div class="col-sm-2">
+                <label for="cargo" class="form-label">Cargo</label>
+                <select class="form-select" name="" id="cargo" formControlName="cargo" name="cargo">
+                    <option value="">Escolha um cargo</option>
+                    <option *ngFor="let cargo of cargos" [value]="cargo">{{ cargo }}</option>
+                </select>
+
+                <app-mensagens-erro [mensagem]="'preencha o campo cargo'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('cargo')">
+                </app-mensagens-erro>
+            </div>
+
+            <div class="col-sm-4">
+                <label for="congregacao" class="form-label">Congregado em</label>
+                <select class="form-select" name="" id="congregacao" formControlName="congregacao" name="congregacao">
+                    <option value="">Escolha uma congregação</option>
+                    <option *ngFor="let congregacao of congregacoes" [value]="congregacao">{{ congregacao }}</option>
+                </select>
+
+                <app-mensagens-erro [mensagem]="'preencha o campo congregação'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('congregacao')">
+                </app-mensagens-erro>
+            </div>
+        </div>
+        
+        <!--
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <label for="congregacao" class="form-label">Congregado em</label>
+                <select class="form-select" name="" id="congregacao" formControlName="congregacao" name="congregacao">
+                    <option value="">Escolha uma congregação</option>
+                    <option *ngFor="let congregacao of congregacoes" [value]="congregacao">{{ congregacao }}</option>
+                </select>
+
+                <app-mensagens-erro [mensagem]="'preencha o campo congregação'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('congregacao')">
+                </app-mensagens-erro>
+            </div>
+        </div>
+        -->
+        <hr>
+
+        <div class="row mb-3" formGroupName="endereco">
+            <div class="col-sm-5">
+                <label for="rua" class="form-label">Rua</label>
+                <input type="text" class="form-control" id="rua" formControlName="rua" name="rua">
+
+                <app-mensagens-erro [mensagem]="'Informe o nome da rua'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('endereco.rua')">
+                </app-mensagens-erro>
+            </div>
+
+            <div class="col-sm-1">
+                <label for="numero" class="form-label">Número</label>
+                <input type="text" class="form-control" id="numero" formControlName="numero" name="numero">
+
+                <app-mensagens-erro [mensagem]="'Informe o número'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('endereco.numero')">
+                </app-mensagens-erro>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="complemento" class="form-label">Complemento</label>
+                <input type="text" class="form-control" id="complemento" formControlName="complemento" name="complemento">
+            </div>
+        </div>
+
+        <div class="row mb-3" formGroupName="endereco">
+            <div class="col-sm-2">
+                <label for="cep" class="form-label">Cep</label>
+                <input type="text" class="form-control" id="cep" formControlName="cep" name="cep">
+
+                <app-mensagens-erro [mensagem]="'Informe o cep'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('endereco.cep')">
+                </app-mensagens-erro>
+            </div>
+
+            <div class="col-sm-4">
+                <label for="bairro" class="form-label">Bairro</label>
+                <input type="text" class="form-control" id="bairro" formControlName="bairro" name="bairro">
+
+                <app-mensagens-erro [mensagem]="'Informe o bairro'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('endereco.bairro')">
+                </app-mensagens-erro>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="cidade" formControlName="cidade" name="cidade">
+
+                <app-mensagens-erro [mensagem]="'Informe a cidade'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('endereco.cidade')">
+                </app-mensagens-erro>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-12" formGroupName="endereco">
+                <label for="estado" class="form-label">Estado</label>
+                <select class="form-select" name="" id="estado" formControlName="estado" name="estado">
+                    <option value="">Escolha um estado</option>
+                    <option *ngFor="let ls of listaEstados" [value]="ls.nome">{{ ls.nome }}</option>
+                </select>
+
+                <app-mensagens-erro [mensagem]="'Informe o estado'" 
+                                    [error]="'required'" 
+                                    [controle]="membrosCadastroForm.get('endereco.estado')">
+                </app-mensagens-erro>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="btn btn-secondary">Limpar</button>
+    <button type="submit" class="btn btn-primary" (click)="salvar()">Salvar</button>
 </div>
