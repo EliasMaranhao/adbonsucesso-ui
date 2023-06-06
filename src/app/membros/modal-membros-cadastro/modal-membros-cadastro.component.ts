@@ -53,6 +53,7 @@ export class ModalMembrosCadastroComponent implements OnInit{
 
 
   salvar(){
-    console.log(this.membrosCadastroForm.value);
+    console.log(`Campo estado está válido: ${this.membrosCadastroForm.get('endereco')?.get('estado')?.valid}`);
+    console.log(`Campo nome está valido: ${this.membrosCadastroForm.get('nome')?.valid}`)
   }
 }
