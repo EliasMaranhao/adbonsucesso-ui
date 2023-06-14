@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Cargo } from '../modelo/modelo';
 import { Status } from '../modelo/modelo';
 import { estados } from 'src/app/shared/modelo/modelo';
+import { MembrosService } from '../membros.service';
 
 @Component({
   selector: 'app-modal-membros-cadastro',
@@ -19,7 +20,8 @@ export class ModalMembrosCadastroComponent implements OnInit{
   listaEstados = estados;
 
   constructor(public modal: NgbActiveModal,
-              private formBuilder: FormBuilder){}
+              private formBuilder: FormBuilder,
+              private membrosService: MembrosService){}
 
 
   ngOnInit(): void {
@@ -53,7 +55,18 @@ export class ModalMembrosCadastroComponent implements OnInit{
 
 
   salvar(){
-    console.log(`Campo estado está válido: ${this.membrosCadastroForm.get('endereco')?.get('estado')?.valid}`);
-    console.log(`Campo nome está valido: ${this.membrosCadastroForm.get('nome')?.valid}`)
+    this.criarNovoMembro();
+  }
+
+  criarNovoMembro(){
+    const membro = this.membrosCadastroForm.value;
+    this.membrosService.salvar(membro).subscribe({
+      next: (membro) => {
+        console.log('Membro salvo com sucesso!')
+      },
+      error: (erro) => {
+        console.log(erro);
+      }
+    })
   }
 }
